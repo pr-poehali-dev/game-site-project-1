@@ -215,8 +215,74 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Game Years */}
+      <section className="py-16 bg-cyber-gray/50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-orbitron font-bold mb-4 text-neon-purple">
+              Игры по годам
+            </h2>
+            <p className="text-muted-foreground">От классики до новинок</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { year: "2024", count: "12", status: "NEW", color: "neon-green" },
+              { year: "2023", count: "28", status: "HOT", color: "neon-pink" },
+              { year: "2022", count: "35", status: "", color: "neon-blue" },
+              { year: "2021", count: "24", status: "", color: "neon-purple" },
+              { year: "2020", count: "19", status: "", color: "neon-green" },
+              { year: "Классика", count: "45", status: "RETRO", color: "neon-pink" }
+            ].map((yearData, index) => (
+              <Card key={index} className={`bg-cyber-light border-${yearData.color}/30 hover:border-${yearData.color} transition-all duration-300 group cursor-pointer hover:scale-105`}>
+                <CardContent className="p-4 text-center space-y-3">
+                  {yearData.status && (
+                    <Badge className={`text-xs ${
+                      yearData.status === 'NEW' ? 'bg-neon-green/20 text-neon-green' :
+                      yearData.status === 'HOT' ? 'bg-neon-pink/20 text-neon-pink' :
+                      'bg-neon-purple/20 text-neon-purple'
+                    }`}>
+                      {yearData.status}
+                    </Badge>
+                  )}
+                  <div>
+                    <h3 className={`text-xl font-orbitron font-bold text-${yearData.color} mb-1`}>
+                      {yearData.year}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {yearData.count} игр
+                    </p>
+                  </div>
+                  <div className={`w-full h-1 bg-${yearData.color}/20 rounded-full overflow-hidden`}>
+                    <div className={`h-full bg-${yearData.color} rounded-full transition-all duration-300 group-hover:animate-pulse`} 
+                         style={{width: `${Math.min(parseInt(yearData.count) * 2, 100)}%`}} />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center space-x-6 bg-cyber-light rounded-full px-8 py-4 border border-border/30">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-neon-green rounded-full animate-pulse"></div>
+                <span className="text-sm text-neon-green font-orbitron">2024: Новинки</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-neon-pink rounded-full animate-pulse"></div>
+                <span className="text-sm text-neon-pink font-orbitron">2023: Хиты года</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-neon-purple rounded-full animate-pulse"></div>
+                <span className="text-sm text-neon-purple font-orbitron">Ретро классика</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Achievements System */}
-      <section className="py-16 bg-cyber-gray/30">
+      <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-orbitron font-bold mb-4 text-neon-pink">
