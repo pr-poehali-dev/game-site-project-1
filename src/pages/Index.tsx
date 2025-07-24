@@ -146,8 +146,77 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements System */}
+      {/* Game Genres */}
       <section className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-orbitron font-bold mb-4 text-neon-blue">
+              Жанры игр
+            </h2>
+            <p className="text-muted-foreground">Выбери свой стиль игры</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { 
+                name: "Шутеры", 
+                icon: "Target", 
+                count: "23 игры", 
+                color: "neon-pink",
+                description: "FPS и TPS экшн"
+              },
+              { 
+                name: "Стратегии", 
+                icon: "Brain", 
+                count: "18 игр", 
+                color: "neon-green",
+                description: "RTS и пошаговые"
+              },
+              { 
+                name: "RPG", 
+                icon: "Sword", 
+                count: "31 игра", 
+                color: "neon-blue",
+                description: "Ролевые приключения"
+              },
+              { 
+                name: "Гонки", 
+                icon: "Car", 
+                count: "17 игр", 
+                color: "neon-purple",
+                description: "Скорость и адреналин"
+              }
+            ].map((genre, index) => (
+              <Card key={index} className={`bg-cyber-light border-${genre.color}/30 hover:border-${genre.color} transition-all duration-300 group cursor-pointer hover:scale-105`}>
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className={`w-16 h-16 mx-auto rounded-full bg-${genre.color}/20 flex items-center justify-center border-2 border-${genre.color} group-hover:animate-pulse`}>
+                    <Icon name={genre.icon as any} className={`text-${genre.color}`} size={28} />
+                  </div>
+                  <div>
+                    <h3 className={`text-xl font-orbitron font-bold text-${genre.color} mb-1`}>
+                      {genre.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-2">{genre.description}</p>
+                    <Badge className={`bg-${genre.color}/20 text-${genre.color} border-${genre.color}/30`}>
+                      {genre.count}
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Button variant="outline" className="border-neon-blue text-neon-blue hover:bg-neon-blue/10">
+              <Icon name="Grid3X3" className="mr-2" size={20} />
+              Посмотреть все жанры
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements System */}
+      <section className="py-16 bg-cyber-gray/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-orbitron font-bold mb-4 text-neon-pink">
